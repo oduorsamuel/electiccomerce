@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalService } from './modal/modal.service';
 
@@ -7,7 +7,7 @@ import { ModalService } from './modal/modal.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   model = {
     email : '',
     password: ''
@@ -16,29 +16,21 @@ export class AppComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
+  count: string;
   constructor(private modalservice: ModalService) { }
   ngOnInit() {
-    // if (this.userService.isLoggedIn()) {
-    // this.router.navigateByUrl('/dashboard/home');
-    // }
   }
 
   onSubmit(form: NgForm) {
     console.log(form.value);
-    // this.userService.login(form.value).subscribe(
-    //   (res: any) => {
-    //     console.log(res);
-    //     this.userService.setToken(res.token);
-    //     const data = {
-    //       UserName: form.value.email,
-    //       LogType: 'Login'
-    //     };
-    //     this.router.navigateByUrl('/dashboard/home');
-    //   },
-    //   err => {
-    //     this.toastr.error(err.error.message);
-    //   }
-    // );
+  }
+
+  ngDoCheck(){
+    if (localStorage.getItem('count')){
+      this.count = localStorage.getItem('count');
+    }else{
+      this.count = '0';
+    }
   }
 
   openModal(id){
