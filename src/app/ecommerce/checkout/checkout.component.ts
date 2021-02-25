@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
     this.products = JSON.parse(localStorage.getItem('products'));
     this.totalprice = this.products.map((o) => Number(o.price)).reduce((a, c) => a + c);
     console.log(this.products);
+    localStorage.removeItem('show');
   }
 
   delete(id) {

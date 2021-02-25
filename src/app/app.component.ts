@@ -23,10 +23,10 @@ export class AppComponent implements OnInit, DoCheck {
   incorrect: boolean;
   constructor(private modalservice: ModalService, private router: Router, public appservice: AppService) { }
   ngOnInit() {
+    localStorage.setItem('show', '1');
   }
 
   onSubmit(form: NgForm) {
-  localStorage.setItem('show', '1');
   const credentials = JSON.parse(localStorage.getItem('credentials'));
   if (credentials){
      switch (credentials.email){

@@ -12,6 +12,7 @@ export class PurchaseComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.removeItem('show');
     this.products = JSON.parse(localStorage.getItem('products'));
     this.totalprice = this.products.map((o) => Number(o.price)).reduce((a, c) => a + c);
   }
