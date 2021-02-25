@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +11,7 @@ export class CheckoutComponent implements OnInit {
   credentials: any;
   totalprice: number;
 
-  constructor() { }
+  constructor(public appservice: AppService) { }
 
   ngOnInit(): void {
     this.credentials = JSON.parse(localStorage.getItem('credentials'));
