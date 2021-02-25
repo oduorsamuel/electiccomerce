@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LandingPageComponent implements OnInit {
   cart = [];
   showcart = false;
+  newarray: any;
 
   constructor() { }
 
@@ -31,6 +32,12 @@ export class LandingPageComponent implements OnInit {
       this.cart = JSON.parse(localStorage.getItem('cart'));
       console.log('cart', this.cart);
     }
+  }
+
+  search(name){
+    // tslint:disable-next-line: prefer-const
+    let obj = this.products.find(o => o.name === name);
+    this.newarray.push(obj);
   }
 
   addtocart(product){
