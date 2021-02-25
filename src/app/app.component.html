@@ -68,15 +68,15 @@
             </ul>
             <div class="tab-content">
               <div id="tab-1" class="tab-pane active">
-                <h5 class="text-center m-y-md">
-                  <span translate>Login</span>
-                </h5>
                 <div class="row">
                   <form class="form-wizard" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
                     <div class="tab-content">
                       <div id="step-3" class="tab-pane active">
                         <div class="row">
                           <div class="col-sm-8 col-sm-offset-2">
+                            <label *ngIf="error" class="validation-message">User does not exist</label>
+                            <label *ngIf="incorrect" class="validation-message">Incorrect Credentials</label>
+                            <br>
                             <div class="form-group">
                               <label for="creditcard-type" class="control-label">Email Address</label>
                               <input id="creditcard-number" class="form-control" type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex" required
@@ -119,11 +119,8 @@
                 </div>
               </div>
               <div id="tab-2" class="tab-pane">
-                <h5 class="text-center m-y-md">
-                  <span translate>Register</span>
-                </h5>
                 <div class="row">
-                  <form class="form-wizard" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+                  <form class="form-wizard" #signInForm="ngForm" (ngSubmit)="signInForm.valid && register(signInForm)">
                     <div class="tab-content">
                       <div id="step-3" class="tab-pane active">
                         <div class="row">

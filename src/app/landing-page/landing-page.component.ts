@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
   cart = [];
+  showcart = false;
 
   constructor() { }
 

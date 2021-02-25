@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalService } from './modal/modal.service';
 
 @Component({
@@ -17,12 +18,33 @@ export class AppComponent implements OnInit, DoCheck {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
   count: string;
-  constructor(private modalservice: ModalService) { }
+  error: boolean;
+  incorrect: boolean;
+  constructor(private modalservice: ModalService, private router: Router) { }
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+   const credentials = JSON.parse(localStorage.getItem('credentials'));
+   if (credentials){
+     switch (credentials.email){
+       case form.value.email:
+        this.closeModal('createModal');
+        this.router.navigate(['ecommerce/checkout']);
+        break;
+        default:
+        this.incorrect = true;
+     }
+     // check
+   }else{
+     this.error = true;
+   }
+  }
+
+  register(form: NgForm){
+    localStorage.setItem('credentials', JSON.stringify(form.value));
+    this.closeModal('createModal');
+    this.router.navigate(['ecommerce/checkout']);
   }
 
   ngDoCheck(){
