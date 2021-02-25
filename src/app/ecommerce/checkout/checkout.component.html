@@ -55,15 +55,15 @@
                     <h4>Your shopping cart - 3 items</h4>
                     <div class="cart">
                       <ul class="cart-list">
-                        <li class="cart-list-item">
+                        <li class="cart-list-item" *ngFor="let obj of products">
                           <div class="cart-list-image">
-                            <a href="product.html">
-                              <img class="cart-list-thumbnail" src="assets/assets/img/5615854990.jpg" alt="image">
+                            <a>
+                              <img class="cart-list-thumbnail" src="assets/img/{{obj.image}}" alt="image">
                             </a>
                           </div>
                           <div class="cart-list-details">
                             <h4 class="cart-list-name">
-                              <a href="product.html">Raja Electic T-shirt Women's S-XL #4398</a>
+                              <a>{{obj.name}}</a>
                             </h4>
                             <p class="cart-list-description">
                               <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quo nulla ad id natus ratione, voluptatum, perspiciatis consequuntur, ea aliquid rem.</small>
@@ -74,127 +74,28 @@
                                 <li>
                                   <span aria-hidden="true">|</span>
                                 </li>
-                                <li>
-                                  <label class="custom-control custom-control-primary custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-label">This is a gift</span>
-                                  </label>
-                                </li>
                               </ul>
                             </div>
                           </div>
                           <div class="cart-list-price">
                             <ul class="list-inline">
                               <li>
-                                <del>$46.00</del>
+                                <del>${{obj.discount}}</del>
                               </li>
                               <li>
-                                <strong>$33.00</strong>
+                                <strong>${{obj.price}}</strong>
                               </li>
                             </ul>
                           </div>
                           <div class="cart-list-quantity">
-                            <input class="form-control" type="text" value="1">
+                            <input class="form-control" disabled type="text" value="1">
                           </div>
-                          <div class="cart-list-subtotal">$33.00</div>
-                        </li>
-                        <li class="cart-list-item">
-                          <div class="cart-list-image">
-                            <a href="product.html">
-                              <img class="cart-list-thumbnail" src="assets/img/5991713086.jpg" alt="Maliha Electic T-shirt">
-                            </a>
-                          </div>
-                          <div class="cart-list-details">
-                            <h4 class="cart-list-name">
-                              <a href="product.html">Maliha Electic T-shirt Women's S-XL #4909</a>
-                            </h4>
-                            <p class="cart-list-description">
-                              <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quo nulla ad id natus ratione, voluptatum, perspiciatis consequuntur, ea aliquid rem.</small>
-                            </p>
-                            <div class="cart-list-actions">
-                              <ul class="list-inline">
-                                <li><a href="#">Delete</a></li>
-                                <li>
-                                  <span aria-hidden="true">|</span>
-                                </li>
-                                <li>
-                                  <label class="custom-control custom-control-primary custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-label">This is a gift</span>
-                                  </label>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="cart-list-price">
-                            <ul class="list-inline">
-                              <li>
-                                <del>$44.00</del>
-                              </li>
-                              <li>
-                                <strong>$36.00</strong>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="cart-list-quantity">
-                            <input class="form-control" type="text" value="1">
-                          </div>
-                          <div class="cart-list-subtotal">$36.00</div>
-                        </li>
-                        <li class="cart-list-item">
-                          <div class="cart-list-image">
-                            <a href="product.html">
-                              <img class="cart-list-thumbnail" src="assets/img/6149937996.jpg" alt="Jade Electic T-shirt">
-                            </a>
-                          </div>
-                          <div class="cart-list-details">
-                            <h4 class="cart-list-name">
-                              <a href="product.html">Jade Electic T-shirt Women's S-XL #5019</a>
-                            </h4>
-                            <p class="cart-list-description">
-                              <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque quo nulla ad id natus ratione, voluptatum, perspiciatis consequuntur, ea aliquid rem.</small>
-                            </p>
-                            <div class="cart-list-actions">
-                              <ul class="list-inline">
-                                <li><a href="#">Delete</a></li>
-                                <li>
-                                  <span aria-hidden="true">|</span>
-                                </li>
-                                <li>
-                                  <label class="custom-control custom-control-primary custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-label">This is a gift</span>
-                                  </label>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="cart-list-price">
-                            <ul class="list-inline">
-                              <li>
-                                <del>$36.00</del>
-                              </li>
-                              <li>
-                                <strong>$33.00</strong>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="cart-list-quantity">
-                            <input class="form-control" type="text" value="1">
-                          </div>
-                          <div class="cart-list-subtotal">$33.00</div>
+                          <div class="cart-list-subtotal">${{obj.price}}</div>
                         </li>
                       </ul>
                       <div class="cart-subtotal">
                         Subtotal (3 items):
-                        <span class="cart-subtotal-amount">$102.00</span>
-                      </div>
-                      <div class="cart-actions">
-                        <button class="btn btn-default"  routerLink="home" >Continue shopping</button>
-                        <button class="btn btn-default"  style="margin-left: 1em;" routerLink="../purchase" >Purchase</button>
+                        <span class="cart-subtotal-amount">${{totalprice}}</span>
                       </div>
                     </div>
                   </div>
@@ -477,12 +378,12 @@
                             <div class="col-sm-12">
                               <div class="form-group">
                                 <label for="email" class="form-label">Email address</label>
-                                <input id="email" class="form-control" type="email" name="email_address">
+                                <input id="email" class="form-control" type="email" name="email_address" value="{{credentials.email}}">
                                 <small class="help-block">We'll email you an order confirmation.</small>
                               </div>
                             </div>
                           </div>
-                          <button class="btn btn-primary btn-block">Continue</button>
+                          <!-- <button class="btn btn-primary btn-block">Continue</button> -->
                         </div>
                       </div>
                     </div>
@@ -502,7 +403,7 @@
                                   <tbody>
                                     <tr>
                                       <td class="col-xs-9">Subtotal</td>
-                                      <td class="col-xs-3">$102.00</td>
+                                      <td class="col-xs-3">${{totalprice}}</td>
                                     </tr>
                                     <tr>
                                       <td class="col-xs-9">Shipping</td>
@@ -513,7 +414,7 @@
                                     <tr>
                                       <td class="col-xs-9">Total</td>
                                       <td class="col-xs-3">
-                                        <span class="payment-total-amount">$102.00</span>
+                                        <span class="payment-total-amount">${{totalprice}}</span>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -632,7 +533,10 @@
                             <p>
                               <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, sapiente magnam explicabo voluptatibus aut reprehenderit eius inventore dolore. Itaque nisi ullam, nulla quibusdam officiis sequi at eum, architecto qui numquam.</small>
                             </p>
-                            <button class="btn btn-default m-y">Track Order</button>
+                            <div class="cart-actions" style="text-align: center;">
+                                <button class="btn btn-default"  routerLink="home" >Continue shopping</button>
+                                <button class="btn btn-default"  style="margin-left: 1em;" routerLink="../purchase" >Purchase</button>
+                              </div>
                           </div>
                         </div>
                       </div>
