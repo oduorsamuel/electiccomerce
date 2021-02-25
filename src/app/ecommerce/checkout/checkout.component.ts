@@ -19,4 +19,20 @@ export class CheckoutComponent implements OnInit {
     console.log(this.products);
   }
 
+  delete(id) {
+    this.products.splice(
+      this.products.findIndex((i) => {
+        return i._id === id;
+      }),
+      1
+    );
+    this.totalprice = this.products
+    .map((o) => Number(o.price))
+    .reduce((a, c) => a + c , 0);
+    const count = this.products.length;
+    console.log(count);
+    localStorage.setItem('count', JSON.stringify(count));
+    localStorage.setItem('products', JSON.stringify(this.products));
+  }
+
 }

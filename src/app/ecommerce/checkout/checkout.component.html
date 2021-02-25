@@ -70,7 +70,7 @@
                             </p>
                             <div class="cart-list-actions">
                               <ul class="list-inline">
-                                <li><a href="#">Delete</a></li>
+                                <li><a (click)="delete(obj._id)">Delete</a></li>
                                 <li>
                                   <span aria-hidden="true">|</span>
                                 </li>
@@ -94,7 +94,7 @@
                         </li>
                       </ul>
                       <div class="cart-subtotal">
-                        Subtotal (3 items):
+                        Subtotal:
                         <span class="cart-subtotal-amount">${{totalprice}}</span>
                       </div>
                     </div>
