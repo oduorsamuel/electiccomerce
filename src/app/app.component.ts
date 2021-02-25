@@ -21,7 +21,9 @@ export class AppComponent implements OnInit, DoCheck {
   count: string;
   error: boolean;
   incorrect: boolean;
-  constructor(private modalservice: ModalService, private router: Router, public appservice: AppService) { }
+  constructor(private modalservice: ModalService, private router: Router, public appservice: AppService) {
+    localStorage.setItem('show', '1');
+   }
   ngOnInit() {
     localStorage.setItem('show', '1');
   }
